@@ -133,7 +133,7 @@ chunker = RecursiveChunker(separators=separators, chunk_size=500)
 | Nguyễn Thùy Linh | `FixedSizeChunker` + overlap ổn định | **10** | Triển khai nhanh, dễ tái lập thí nghiệm | Một số đoạn dài vẫn cắt giữa ý |
 | Nguyễn Hoàng Khải Minh | `SentenceChunker` + tinh chỉnh `max_sentences_per_chunk` | **10** | Chunk đọc tự nhiên, phù hợp câu hỏi ngắn | Chiến lược phụ thuộc dấu câu tiếng Anh |
 | Nguyễn Thị Diệu Linh | `RecursiveChunker` (separator tùy chỉnh nhẹ) | **10** | Giữ được khối heading/bullet | Thời gian tuning separator |
-| Nguyễn Hoàng Duy | Kết hợp metadata + `search_with_filter` trong demo | **10** | Lọc `category` hiệu quả trên query hẹp | Cần mở rộng benchmark khi đổi schema metadata |
+| Nguyễn Hoàng Duy | HeadingChunker — tách theo `heading, anchor` Concept prepend vào mỗi sibling chunk | 10 | Chunk trọn nghĩa theo section; embedding có English anchor dù content tiếng Việt | Chunk có thể rất to nếu section dài; retrieval yếu khi query và content khác ngôn ngữ |
 
 **Kết luận strategy tốt nhất cho domain này:**  
 Nhóm thống nhất **`RecursiveChunker`** làm hướng chính cho IELTS (heading/bullet), đồng thời mỗi thành viên có nhánh so sánh riêng để học chéo. Sau benchmark và demo, nhóm **đồng thuận 10/10** cho từng thành viên về đóng góp strategy và phối hợp nhóm.
