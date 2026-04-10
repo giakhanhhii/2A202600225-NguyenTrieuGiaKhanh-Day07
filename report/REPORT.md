@@ -108,10 +108,10 @@ Chạy `ChunkingStrategyComparator().compare()` trên 3 tài liệu:
 
 ### Strategy Của Tôi
 
-**Loại:** `RecursiveChunker` (tùy chỉnh thứ tự separator cho IELTS)
+**Loại:** `RecursiveChunker` 
 
 **Mô tả cách hoạt động:**  
-Chunk theo thứ tự separator `["\n\n", "\n", ". ", " ", ""]`: ưu tiên chỗ ngắt tự nhiên (đoạn, dòng, câu) trước khi cắt cứng theo `chunk_size`. `_split()` gọi đệ quy; nếu đoạn vẫn dài thì hạ xuống separator chi tiết hơn; hết separator thì cắt theo độ dài.
+Chunk theo thứ tự separator `["\n\n", "\n", ". ", " ", ""]`: ưu tiên chỗ ngắt tự nhiên (đoạn, dòng, câu) trước khi cắt cứng theo `chunk_size`. `_split()` gọi đệ quy; nếu đoạn vẫn dài thì hạ xuống separator chi tiết hơn; hết separator thì cắt theo độ dài. Ở mỗi bước, text được tách theo separator hiện tại rồi gom lần lượt các phần vào một buffer miễn chưa vượt `chunk_size`; chỗ vượt ngưỡng hoặc không tách được nữa thì đưa sang lần đệ quy tiếp (separator kế) hoặc cắt cứng thành các khối đúng `chunk_size`.
 
 **Tại sao chọn strategy này cho domain nhóm?**  
 File IELTS KB thường là heading + bullet + ví dụ; recursive giữ được khối ý tốt hơn fixed-size. Trong code và đo metric nhóm dùng **`RecursiveChunker`**; bảng thành viên ghi **`Semantic Chunker`** cho mình là góc thảo luận (chunk theo nghĩa/embedding), còn kết luận triển khai vẫn là **`RecursiveChunker`** (đoạn in nghiêng sau bảng).
