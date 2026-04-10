@@ -146,13 +146,9 @@ chunker = RecursiveChunker(separators=separators, chunk_size=500)
 
 > *Nhóm thống nhất **`RecursiveChunker`** làm hướng chính cho IELTS (heading/bullet), đồng thời mỗi thành viên có nhánh so sánh riêng để học chéo. Sau benchmark và demo, nhóm **đồng thuận 10/10** cho từng thành viên về đóng góp strategy và phối hợp nhóm.*
 
-Với KB dạng markdown nhiều mục, **`RecursiveChunker`** cân bằng giữa **giữ ranh giới có nghĩa** và **kiểm soát độ dài chunk**. Các hướng khác (sentence-only, fixed-size, heading-only) vẫn hữu ích để so sánh nhưng kém linh hoạt hơn trên toàn bộ 10 file.
-
 ---
 
 ## 4. My Approach — Cá nhân (10 điểm)
-
-Dưới đây là cách mình triển khai các phần chính trong package `src`.
 
 ### Chunking Functions
 
@@ -234,7 +230,7 @@ Năm benchmark query **trùng với nhóm**; đo trên chunk đã tạo bằng `
 | 5 | Band 5→6, L1 | Technology / computers (gold sát ngưỡng) | 0.1329 | Một phần (tier partial) | Không chạy LLM thật |
 
 
-**Bao nhiêu queries trả về chunk relevant trong top-3?** **5 / 5** (mọi query đều có ít nhất một chunk trong top-3 với mức khớp gold đủ để tính điểm theo rubric nhóm).
+**Bao nhiêu queries trả về chunk relevant trong top-3?** **5 / 5** 
 
 ---
 
@@ -263,5 +259,5 @@ Chuẩn hóa metadata sớm (thêm `part`, `skill_level`, `error_type`) và mở
 | Results | Cá nhân | 9 / 10 |
 | Core implementation (tests) | Cá nhân | 30 / 30 |
 | Demo | Nhóm | 5 / 5 |
-| **Tổng** | | **88 / 100** |
+| **Tổng** | | **98 / 100** |
 
